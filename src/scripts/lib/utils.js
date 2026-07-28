@@ -89,6 +89,11 @@ module.exports.capabilityMap = {
     minFwMajor: 4,
     minFwMinor: 9
   },
+  TOUCH: {
+    platforms: ['emery', 'gabbro'],
+    minFwMajor: 4,
+    minFwMinor: 9
+  },
   HEALTH: {
     platforms: ['basalt', 'chalk', 'diorite', 'emery', 'flint', 'gabbro'],
     minFwMajor: 3,
