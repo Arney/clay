@@ -74,6 +74,11 @@ module.exports.capabilityMap = {
     minFwMajor: 0,
     minFwMinor: 0
   },
+  RGB_BACKLIGHT: {
+    platforms: ['emery'],
+    minFwMajor: 4,
+    minFwMinor: 9
+  },
   SMARTSTRAP: {
     platforms: ['basalt', 'chalk', 'diorite', 'emery'],
     minFwMajor: 3,

@@ -670,6 +670,7 @@ Below is the full list of capabilities
 | COLOR | Running on hardware that supports 64 colors. |
 | COMPASS | Running on hardware that includes a compass. |
 | MICROPHONE | Running on hardware that includes a microphone. |
+| RGB_BACKLIGHT | Running on hardware that includes a RGB backlight. |
 | SMARTSTRAP | Running on hardware that includes a smartstrap connector. |
 | SMARTSTRAP_POWER | Running on hardware that includes a powered smartstrap connector. |
 | SPEAKER | Running on hardware that includes a speaker. |
