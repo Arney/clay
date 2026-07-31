@@ -161,13 +161,63 @@ describe('manipulators', function() {
   });
 
   describe('val', function() {
-    var type = 'input';
-    testSetGet(type, 'test321');
-    testSetGet(type, 1234, '1234');
-    testDisable(type);
-    testEnable(type);
-    testShow(type);
-    testHide(type);
+    let stringInputType = {
+      type: 'input',
+      serializeValueAs: 'string'
+    };
+
+    let integerInputType = {
+      type: 'input',
+      serializeValueAs: 'integer'
+    };
+
+    let stringSelectType = {
+      type: 'select',
+      defaultValue: 'value-1',
+      options: [
+        { label: 'label 1', value: '1' },
+        { label: 'label 2', value: '2' }],
+      serializeValueAs: 'string'
+    };
+
+    let integerSelectType = {
+      type: 'select',
+      defaultValue: 'value-1',
+      options: [
+        { label: 'label 1', value: '1' },
+        { label: 'label 2', value: '2' }],
+      serializeValueAs: 'integer'
+    };
+
+    testSetGet(stringInputType, 'test321');
+    testSetGet(stringInputType, 1234, '1234');
+    testSetGet(integerInputType, 'test321', 0);
+    testSetGet(integerInputType, 1234);
+
+    testSetGet(stringSelectType, '1');
+    testSetGet(stringSelectType, 2, '2');
+    testSetGet(integerSelectType, 1);
+    testSetGet(integerSelectType, '2', 2);
+
+    testDisable(stringInputType);
+    testDisable(integerInputType);
+    testDisable(stringSelectType);
+    testDisable(integerSelectType);
+
+    testEnable(stringInputType);
+    testEnable(integerInputType);
+    testEnable(stringSelectType);
+    testEnable(integerSelectType);
+
+    testHide(stringInputType);
+    testHide(integerInputType);
+    testHide(stringSelectType);
+    testHide(integerSelectType);
+
+    testShow(stringInputType);
+    testShow(integerInputType);
+    testShow(stringSelectType);
+    testShow(integerSelectType);
   });
 
   describe('slider', function() {
@@ -203,22 +253,54 @@ describe('manipulators', function() {
   });
 
   describe('radiogroup', function() {
-    var type = {
+    var stringType = {
       type: 'radiogroup',
       clayId: 1,
       options: [
         { label: '1', value: 'one' },
         { label: '2', value: 'two' },
-        { label: '3', value: 'three "quote' }
-      ]
+        { label: '3', value: 'three "quote' },
+        { label: '4', value: 4 },
+        { label: '5', value: '5 with text after' },
+        { label: '5', value: '6.5' }
+      ],
+      serializeValueAs: 'string'
     };
-    testSetGet(type, 'one');
-    testSetGet(type, 'two');
-    testSetGet(type, 'three "quote');
-    testDisable(type);
-    testEnable(type);
-    testShow(type);
-    testHide(type);
+
+    var integerType = {
+      type: 'radiogroup',
+      clayId: 1,
+      options: [
+        { label: '1', value: 'one' },
+        { label: '2', value: 'two' },
+        { label: '3', value: 'three "quote' },
+        { label: '4', value: 4 },
+        { label: '5', value: '5 with text after' },
+        { label: '5', value: '6.5' }
+      ],
+      serializeValueAs: 'integer'
+    };
+
+    testSetGet(stringType, 'one');
+    testSetGet(stringType, 'two');
+    testSetGet(stringType, 'three "quote');
+    testSetGet(stringType, '4');
+    testSetGet(stringType, '5 with text after');
+    testSetGet(stringType, '6.5');
+    testSetGet(integerType, 'one', 0);
+    testSetGet(integerType, 'two', 0);
+    testSetGet(integerType, 'three "quote', 0);
+    testSetGet(integerType, 4, 4);
+    testSetGet(integerType, '5 with text after', 5);
+    testSetGet(integerType, '6.5', 6);
+    testDisable(stringType);
+    testDisable(integerType);
+    testEnable(stringType);
+    testEnable(integerType);
+    testShow(stringType);
+    testShow(integerType);
+    testHide(stringType);
+    testHide(integerType);
   });
 
   describe('checkboxgroup', function() {

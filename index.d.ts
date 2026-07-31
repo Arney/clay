@@ -26,6 +26,7 @@ interface ClayConfigItem {
   label?: string;
   attributes?: Record<string, unknown>;
   options?: unknown[];
+  serializeValueAs?: string,
   items?: ClayConfigItem[];
   capabilities?: string[];
   group?: string;
